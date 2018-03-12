@@ -16,5 +16,16 @@ namespace MyJukeBox
         {
             InitializeComponent();
         }
+
+        private void btn_About_Click(object sender, EventArgs e)
+        {
+            new AboutForm().Show(); // When this button is clicked, the form for 'about' the programme opens.
+        }
+
+        private void btn_Setup_Click(object sender, EventArgs e)
+        {
+            new Setup().Show(); // Opens the setup window.
+        }
+
     }
 }
