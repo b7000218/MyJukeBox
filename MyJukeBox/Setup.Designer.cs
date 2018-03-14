@@ -35,7 +35,7 @@
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_Copy = new System.Windows.Forms.Button();
             this.btn_Move = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox_Genre_Contents = new System.Windows.Forms.ListBox();
             this.lbl_Genre_Title = new System.Windows.Forms.Label();
             this.textBox_Genre_Title = new System.Windows.Forms.TextBox();
             this.btn_Back = new System.Windows.Forms.Button();
@@ -96,6 +96,7 @@
             this.btn_Clear.TabIndex = 3;
             this.btn_Clear.Text = "Clear Tracks";
             this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_Copy
             // 
@@ -105,6 +106,7 @@
             this.btn_Copy.TabIndex = 4;
             this.btn_Copy.Text = "Copy Tracks >>";
             this.btn_Copy.UseVisualStyleBackColor = true;
+            this.btn_Copy.Click += new System.EventHandler(this.btn_Copy_Click);
             // 
             // btn_Move
             // 
@@ -115,13 +117,13 @@
             this.btn_Move.Text = "Move Tracks >>";
             this.btn_Move.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // listBox_Genre_Contents
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(0, 58);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(184, 186);
-            this.listBox2.TabIndex = 1;
+            this.listBox_Genre_Contents.FormattingEnabled = true;
+            this.listBox_Genre_Contents.Location = new System.Drawing.Point(0, 58);
+            this.listBox_Genre_Contents.Name = "listBox_Genre_Contents";
+            this.listBox_Genre_Contents.Size = new System.Drawing.Size(184, 186);
+            this.listBox_Genre_Contents.TabIndex = 1;
             // 
             // lbl_Genre_Title
             // 
@@ -157,7 +159,7 @@
             this.groupBox_Genre.Controls.Add(this.btn_Back);
             this.groupBox_Genre.Controls.Add(this.textBox_Genre_Title);
             this.groupBox_Genre.Controls.Add(this.lbl_Genre_Title);
-            this.groupBox_Genre.Controls.Add(this.listBox2);
+            this.groupBox_Genre.Controls.Add(this.listBox_Genre_Contents);
             this.groupBox_Genre.Location = new System.Drawing.Point(355, 45);
             this.groupBox_Genre.Name = "groupBox_Genre";
             this.groupBox_Genre.Size = new System.Drawing.Size(184, 329);
@@ -182,6 +184,7 @@
             this.btn_Delete.TabIndex = 7;
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Add
             // 
@@ -191,6 +194,7 @@
             this.btn_Add.TabIndex = 6;
             this.btn_Add.Text = "Add";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // btn_Next
             // 
@@ -253,7 +257,7 @@
         private System.Windows.Forms.ListBox listBox_Imported_Tracks;
         private System.Windows.Forms.Button btn_Copy;
         private System.Windows.Forms.Button btn_Move;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox_Genre_Contents;
         private System.Windows.Forms.Label lbl_Genre_Title;
         private System.Windows.Forms.TextBox textBox_Genre_Title;
         private System.Windows.Forms.Button btn_Back;
