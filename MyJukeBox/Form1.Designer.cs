@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblCopyrightNotice = new System.Windows.Forms.Label();
             this.listBox_PlayList = new System.Windows.Forms.ListBox();
             this.textBox_Now_Playing = new System.Windows.Forms.TextBox();
@@ -36,7 +37,9 @@
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.btn_About = new System.Windows.Forms.Button();
             this.btn_Setup = new System.Windows.Forms.Button();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel_Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCopyrightNotice
@@ -113,6 +116,15 @@
             this.btn_Setup.UseVisualStyleBackColor = true;
             this.btn_Setup.Click += new System.EventHandler(this.btn_Setup_Click);
             // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(136, 25);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(235, 47);
+            this.axWindowsMediaPlayer1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,6 +133,7 @@
             this.BackgroundImage = global::MyJukeBox.Properties.Resources.jukebox;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(519, 488);
+            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.panel_Menu);
             this.Controls.Add(this.listBox_Genre_List);
             this.Controls.Add(this.textBox_Genre_Title);
@@ -131,6 +144,7 @@
             this.Name = "Form1";
             this.Text = "My Juke Box v1.0";
             this.panel_Menu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +160,7 @@
         private System.Windows.Forms.Panel panel_Menu;
         private System.Windows.Forms.Button btn_About;
         private System.Windows.Forms.Button btn_Setup;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }
 

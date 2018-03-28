@@ -13,14 +13,10 @@ namespace MyJukeBox
 {
     public partial class Setup : Form
     {
+        public int Genre_Number;
         public Setup()
         {
             InitializeComponent();
-        }
-
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            this.Close(); // Simply closes this form.
         }
 
         private void btn_Import_Click(object sender, EventArgs e)
@@ -58,6 +54,7 @@ namespace MyJukeBox
             {
                 listBox_Genre_Contents.Items.Add(listBox_Imported_Tracks.SelectedItem); // Copies the item currently selected in the 'import' listbox into the 'genre' listbox.
             }
+                
 
         }
 
@@ -65,7 +62,7 @@ namespace MyJukeBox
         {
             if (textBox_Genre_Title.Text == "")
             {
-                MessageBox.Show("Please enter a title for this genre");
+                MessageBox.Show("Please enter a title for this genre.");
             }
             else
             {
@@ -77,11 +74,8 @@ namespace MyJukeBox
                 foreach (string Values in Tracks)
                 {
                     myOutputStream.WriteLine(Values); // A foreach loop writes the desired string value into the file.
-                    MessageBox.Show("You have added " + Values + " to this genre");
+                    MessageBox.Show("You have added " + Values + " to this genre.");
                 }
-
-
-
                 myOutputStream.Close(); // Closing the connection to the file.
             }
         }
@@ -89,8 +83,33 @@ namespace MyJukeBox
         private void btn_Delete_Click(object sender, EventArgs e)
         {
             string Path = Directory.GetCurrentDirectory() + "\\";
-            File.WriteAllText(Path + "GenreConfig.txt",string.Empty); // Here, we overwrite the text file with the 'empty' argument, essentially clearing it so that it can be redone if the user wishes.
+            File.WriteAllText(Path + "GenreConfig.txt", string.Empty); // Here, we overwrite the text file with the 'empty' argument, essentially clearing it so that it can be redone if the user wishes.
+            textBox_Genre_Title.Clear();
             MessageBox.Show("You have deleted your genre configuration file. Add a new genre and some tracks to create a new one.");
+        }
+
+        private void btn_OK_Click_1(object sender, EventArgs e)
+        {
+            this.Close(); // Closes the form when the user is ready to move on.
+        }
+
+        private void btn_Move_Click(object sender, EventArgs e)
+        {
+            
+            if (listBox_Imported_Tracks.Items.Count <= 0)
+            {
+                MessageBox.Show("You must have items available to move. Try to import some now."); // The user is unable to copy nothing into the second listbox, and this listbox prompts them to amdend this issue.
+            }
+            else if (listBox_Imported_Tracks.SelectedIndex != -1)
+            {
+                listBox_Genre_Contents.Items.Add(listBox_Imported_Tracks.SelectedItem);
+                listBox_Imported_Tracks.Items.Remove(listBox_Imported_Tracks.SelectedItem); // When the item is moved from the original listbox, this code removes it from the former altogether.
+            }
+        }
+
+        private void btn_Delete_From_Genre_Click(object sender, EventArgs e)
+        {
+            listBox_Genre_Contents.Items.Clear();
         }
     }
 }

@@ -44,7 +44,7 @@
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
             this.btn_Next = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_OK = new System.Windows.Forms.Button();
             this.btn_Delete_From_Genre = new System.Windows.Forms.Button();
             this.groupBox_Import.SuspendLayout();
             this.groupBox_Genre.SuspendLayout();
@@ -71,10 +71,10 @@
             // lbl_Setup
             // 
             this.lbl_Setup.AutoSize = true;
-            this.lbl_Setup.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Setup.Location = new System.Drawing.Point(170, 9);
+            this.lbl_Setup.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Setup.Location = new System.Drawing.Point(153, 9);
             this.lbl_Setup.Name = "lbl_Setup";
-            this.lbl_Setup.Size = new System.Drawing.Size(218, 24);
+            this.lbl_Setup.Size = new System.Drawing.Size(270, 21);
             this.lbl_Setup.TabIndex = 1;
             this.lbl_Setup.Text = "Setup the Jukebox...";
             // 
@@ -116,6 +116,7 @@
             this.btn_Move.TabIndex = 5;
             this.btn_Move.Text = "Move Tracks >>";
             this.btn_Move.UseVisualStyleBackColor = true;
+            this.btn_Move.Click += new System.EventHandler(this.btn_Move_Click);
             // 
             // listBox_Genre_Contents
             // 
@@ -205,15 +206,15 @@
             this.btn_Next.Text = ">>\r\nNext";
             this.btn_Next.UseVisualStyleBackColor = true;
             // 
-            // btn_Cancel
+            // btn_OK
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(232, 318);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(102, 39);
-            this.btn_Cancel.TabIndex = 6;
-            this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
-            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            this.btn_OK.Location = new System.Drawing.Point(232, 318);
+            this.btn_OK.Name = "btn_OK";
+            this.btn_OK.Size = new System.Drawing.Size(102, 39);
+            this.btn_OK.TabIndex = 6;
+            this.btn_OK.Text = "OK";
+            this.btn_OK.UseVisualStyleBackColor = true;
+            this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click_1);
             // 
             // btn_Delete_From_Genre
             // 
@@ -223,6 +224,7 @@
             this.btn_Delete_From_Genre.TabIndex = 7;
             this.btn_Delete_From_Genre.Text = "Delete Tracks From Genre";
             this.btn_Delete_From_Genre.UseVisualStyleBackColor = true;
+            this.btn_Delete_From_Genre.Click += new System.EventHandler(this.btn_Delete_From_Genre_Click);
             // 
             // Setup
             // 
@@ -230,7 +232,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 376);
             this.Controls.Add(this.btn_Delete_From_Genre);
-            this.Controls.Add(this.btn_Cancel);
+            this.Controls.Add(this.btn_OK);
             this.Controls.Add(this.btn_Move);
             this.Controls.Add(this.btn_Copy);
             this.Controls.Add(this.groupBox_Genre);
@@ -266,7 +268,7 @@
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.Button btn_Next;
         private System.Windows.Forms.Label lbl_Genre_Control;
-        private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.Button btn_Delete_From_Genre;
     }
 }
