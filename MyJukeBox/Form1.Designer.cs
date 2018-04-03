@@ -32,12 +32,13 @@
             this.lblCopyrightNotice = new System.Windows.Forms.Label();
             this.listBox_PlayList = new System.Windows.Forms.ListBox();
             this.textBox_Now_Playing = new System.Windows.Forms.TextBox();
-            this.textBox_Genre_Title = new System.Windows.Forms.TextBox();
+            this.textBox_GenreTitle = new System.Windows.Forms.TextBox();
             this.listBox_Genre_List = new System.Windows.Forms.ListBox();
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.btn_About = new System.Windows.Forms.Button();
             this.btn_Setup = new System.Windows.Forms.Button();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.btn_Refresh = new System.Windows.Forms.Button();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
@@ -63,19 +64,19 @@
             // textBox_Now_Playing
             // 
             this.textBox_Now_Playing.BackColor = System.Drawing.Color.Lime;
-            this.textBox_Now_Playing.Location = new System.Drawing.Point(168, 243);
+            this.textBox_Now_Playing.Location = new System.Drawing.Point(168, 256);
             this.textBox_Now_Playing.Name = "textBox_Now_Playing";
             this.textBox_Now_Playing.ReadOnly = true;
             this.textBox_Now_Playing.Size = new System.Drawing.Size(181, 20);
             this.textBox_Now_Playing.TabIndex = 2;
             // 
-            // textBox_Genre_Title
+            // textBox_GenreTitle
             // 
-            this.textBox_Genre_Title.Location = new System.Drawing.Point(168, 116);
-            this.textBox_Genre_Title.Name = "textBox_Genre_Title";
-            this.textBox_Genre_Title.ReadOnly = true;
-            this.textBox_Genre_Title.Size = new System.Drawing.Size(181, 20);
-            this.textBox_Genre_Title.TabIndex = 3;
+            this.textBox_GenreTitle.Location = new System.Drawing.Point(168, 116);
+            this.textBox_GenreTitle.Name = "textBox_GenreTitle";
+            this.textBox_GenreTitle.ReadOnly = true;
+            this.textBox_GenreTitle.Size = new System.Drawing.Size(181, 20);
+            this.textBox_GenreTitle.TabIndex = 3;
             // 
             // listBox_Genre_List
             // 
@@ -93,7 +94,7 @@
             this.panel_Menu.Controls.Add(this.btn_Setup);
             this.panel_Menu.Location = new System.Drawing.Point(0, 462);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(520, 26);
+            this.panel_Menu.Size = new System.Drawing.Size(520, 30);
             this.panel_Menu.TabIndex = 5;
             // 
             // btn_About
@@ -119,11 +120,21 @@
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(136, 25);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(135, 32);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(235, 47);
             this.axWindowsMediaPlayer1.TabIndex = 6;
+            // 
+            // btn_Refresh
+            // 
+            this.btn_Refresh.Location = new System.Drawing.Point(191, 85);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(136, 25);
+            this.btn_Refresh.TabIndex = 7;
+            this.btn_Refresh.Text = "Refresh Genres";
+            this.btn_Refresh.UseVisualStyleBackColor = true;
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
             // Form1
             // 
@@ -133,16 +144,18 @@
             this.BackgroundImage = global::MyJukeBox.Properties.Resources.jukebox;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(519, 488);
+            this.Controls.Add(this.btn_Refresh);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.panel_Menu);
             this.Controls.Add(this.listBox_Genre_List);
-            this.Controls.Add(this.textBox_Genre_Title);
+            this.Controls.Add(this.textBox_GenreTitle);
             this.Controls.Add(this.textBox_Now_Playing);
             this.Controls.Add(this.listBox_PlayList);
             this.Controls.Add(this.lblCopyrightNotice);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "My Juke Box v1.0";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
@@ -155,12 +168,13 @@
         private System.Windows.Forms.Label lblCopyrightNotice;
         private System.Windows.Forms.ListBox listBox_PlayList;
         private System.Windows.Forms.TextBox textBox_Now_Playing;
-        private System.Windows.Forms.TextBox textBox_Genre_Title;
+        private System.Windows.Forms.TextBox textBox_GenreTitle;
         private System.Windows.Forms.ListBox listBox_Genre_List;
         private System.Windows.Forms.Panel panel_Menu;
         private System.Windows.Forms.Button btn_About;
         private System.Windows.Forms.Button btn_Setup;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private System.Windows.Forms.Button btn_Refresh;
     }
 }
 

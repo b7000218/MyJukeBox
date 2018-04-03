@@ -68,11 +68,12 @@ namespace MyJukeBox
             {
                 string Path = Directory.GetCurrentDirectory() + "\\";
                 StreamWriter myOutputStream = File.CreateText(Path + "GenreConfig.txt"); // This finds the current directory, and add a .txt file as I have named it here, which will act as the basis for configuring the genres a user can create.
-
+                
                 string[] Tracks = listBox_Genre_Contents.Items.OfType<string>().ToArray(); // This creates the array of tracks, based on what the user selects in the given listbox, and adds this to said array.
-
+                myOutputStream.WriteLine(textBox_Genre_Title.Text);
                 foreach (string Values in Tracks)
                 {
+                    
                     myOutputStream.WriteLine(Values); // A foreach loop writes the desired string value into the file.
                     MessageBox.Show("You have added " + Values + " to this genre.");
                 }
@@ -91,6 +92,7 @@ namespace MyJukeBox
         private void btn_OK_Click_1(object sender, EventArgs e)
         {
             this.Close(); // Closes the form when the user is ready to move on.
+            
         }
 
         private void btn_Move_Click(object sender, EventArgs e)
