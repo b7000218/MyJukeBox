@@ -38,12 +38,12 @@
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.btn_About = new System.Windows.Forms.Button();
             this.btn_Setup = new System.Windows.Forms.Button();
-            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
+            this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.timer_Moving_Tracks = new System.Windows.Forms.Timer(this.components);
             this.timer_Move_to_Playing = new System.Windows.Forms.Timer(this.components);
             this.panel_Menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCopyrightNotice
@@ -63,7 +63,6 @@
             this.listBox_PlayList.Name = "listBox_PlayList";
             this.listBox_PlayList.Size = new System.Drawing.Size(140, 108);
             this.listBox_PlayList.TabIndex = 1;
-            this.listBox_PlayList.SelectedIndexChanged += new System.EventHandler(this.listBox_PlayList_SelectedIndexChanged);
             // 
             // textBox_Now_Playing
             // 
@@ -73,6 +72,7 @@
             this.textBox_Now_Playing.ReadOnly = true;
             this.textBox_Now_Playing.Size = new System.Drawing.Size(181, 20);
             this.textBox_Now_Playing.TabIndex = 2;
+            this.textBox_Now_Playing.TextChanged += new System.EventHandler(this.textBox_Now_Playing_TextChanged);
             // 
             // textBox_GenreTitle
             // 
@@ -121,14 +121,15 @@
             this.btn_Setup.UseVisualStyleBackColor = true;
             this.btn_Setup.Click += new System.EventHandler(this.btn_Setup_Click);
             // 
-            // Player
+            // axWindowsMediaPlayer
             // 
-            this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(135, 32);
-            this.Player.Name = "Player";
-            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(235, 47);
-            this.Player.TabIndex = 6;
+            this.axWindowsMediaPlayer.Enabled = true;
+            this.axWindowsMediaPlayer.Location = new System.Drawing.Point(135, 32);
+            this.axWindowsMediaPlayer.Name = "axWindowsMediaPlayer";
+            this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
+            this.axWindowsMediaPlayer.Size = new System.Drawing.Size(235, 47);
+            this.axWindowsMediaPlayer.TabIndex = 6;
+            this.axWindowsMediaPlayer.Visible = false;
             // 
             // btn_Refresh
             // 
@@ -161,7 +162,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(519, 488);
             this.Controls.Add(this.btn_Refresh);
-            this.Controls.Add(this.Player);
+            this.Controls.Add(this.axWindowsMediaPlayer);
             this.Controls.Add(this.panel_Menu);
             this.Controls.Add(this.listBox_Genre_List);
             this.Controls.Add(this.textBox_GenreTitle);
@@ -173,7 +174,7 @@
             this.Text = "My Juke Box v1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_Menu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,7 +190,7 @@
         private System.Windows.Forms.Panel panel_Menu;
         private System.Windows.Forms.Button btn_About;
         private System.Windows.Forms.Button btn_Setup;
-        private AxWMPLib.AxWindowsMediaPlayer Player;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
         private System.Windows.Forms.Button btn_Refresh;
         private System.Windows.Forms.Timer timer_Moving_Tracks;
         private System.Windows.Forms.Timer timer_Move_to_Playing;

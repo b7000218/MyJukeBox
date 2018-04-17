@@ -14,10 +14,9 @@ namespace MyJukeBox
     public partial class Form1 : Form
     {
         string PathToDirectory = Directory.GetCurrentDirectory() + "\\"; // Locates to the desired directory.
-        string TitleRead = Directory.GetCurrentDirectory() + "//" + "GenreTitles.txt";  
-        // Declaring a string variable for the items the application will be reading in.
-        string[] TrackNames = File.ReadAllLines("GenreConfig.txt");
-        
+        string TitleRead = Directory.GetCurrentDirectory() + "//" + "GenreTitles.txt"; // Locates the file which contains genre titles.
+        string[] TrackNames = File.ReadAllLines("GenreConfig.txt"); // Creates an array for tracks to be inputted.
+        string pathToSongs = Directory.GetCurrentDirectory() + "\\";  // For the actual jukebox player, this is the path to the song folder.
 
         public Form1()
         {
@@ -46,19 +45,19 @@ namespace MyJukeBox
                 string Track;
                 while ((Track = reader.ReadLine()) != null)
                 {
-                    listBox_Genre_List.Items.Add(Track);
+                    listBox_Genre_List.Items.Add(Track); // Adds each track in turn, if the file is not null.
                 }
             }
                 if (listBox_Genre_List == null)
                 {
-                textBox_GenreTitle.Text = "No Genres Yet!";
+                textBox_GenreTitle.Text = "No Genres Yet!"; // Otherwise, we are promted with an error.
                 }
                 else
                 {
-                    textBox_GenreTitle.Text = File.ReadAllText(TitleRead);
+                    textBox_GenreTitle.Text = File.ReadAllText(TitleRead); // Reads the title into its file.
 
                 }
-            myInputStream.Close();
+            myInputStream.Close(); // Making sure to close the connection so that the file writes.
         }
 
 
@@ -87,13 +86,11 @@ namespace MyJukeBox
 
             }
             myInputStream.Close();
-        }
 
-        private void listBox_PlayList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            Player.URL = listBox_PlayList.SelectedItem.ToString();
-            Player.Ctlcontrols.play();
+            WMPLib.WindowsMediaPlayer JukeBox = new WMPLib.WindowsMediaPlayer();
+            string pathToSongs = Directory.GetCurrentDirectory() + "\\";
+            JukeBox.URL = (pathToSongs + "//Songs/" + textBox_Now_Playing.Text);
+            JukeBox.controls.play();
         }
 
         private void timer_Moving_Tracks_Tick(object sender, EventArgs e)
@@ -116,7 +113,16 @@ namespace MyJukeBox
                 timer_Move_to_Playing.Start();
                 textBox_Now_Playing.Text = listBox_PlayList.Items[0].ToString();
                 listBox_PlayList.Items.RemoveAt(0);
+
             }
+            
+        }
+
+        private void textBox_Now_Playing_TextChanged(object sender, EventArgs e)
+        {
+            WMPLib.WindowsMediaPlayer axWindowsMediaPlayer = new WMPLib.WindowsMediaPlayer(); // This is my instance of the media player.
+            axWindowsMediaPlayer.URL = (pathToSongs + "//Songs/" + textBox_Now_Playing.Text); // This is how it finds the songs to play.
+            axWindowsMediaPlayer.controls.play(); // WHen it is time, the song will play.
         }
     }
 }
