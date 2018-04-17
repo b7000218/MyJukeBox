@@ -14,7 +14,8 @@ namespace MyJukeBox
     public partial class Form1 : Form
     {
         string PathToDirectory = Directory.GetCurrentDirectory() + "\\"; // Locates to the desired directory.
-        String GenreTitle; // Declaring a string variable for the items the application will be reading in.
+        string TitleRead = Directory.GetCurrentDirectory() + "//" + "GenreTitles.txt";  
+        // Declaring a string variable for the items the application will be reading in.
         string[] TrackNames = File.ReadAllLines("GenreConfig.txt");
         
         public Form1()
@@ -35,9 +36,8 @@ namespace MyJukeBox
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
             listBox_Genre_List.Items.Clear(); // This updates the genre and reads it into this listbox.
-            textBox_GenreTitle.Text = "";
+            
             StreamReader myInputStream = File.OpenText(PathToDirectory + ("GenreConfig.txt"));
-            GenreTitle = myInputStream.ReadLine();
             List<string> Tracks = new List<string>(); // Using a list, the text file is read into the listbox.
             using (StreamReader reader = new StreamReader(PathToDirectory + "GenreConfig.txt"))
             {
@@ -47,14 +47,13 @@ namespace MyJukeBox
                     listBox_Genre_List.Items.Add(Track);
                 }
             }
-                if (GenreTitle == null)
+                if (listBox_Genre_List == null)
                 {
-                    textBox_GenreTitle.Text = "No Genres yet!";
+                textBox_GenreTitle.Text = "No Genres Yet!";
                 }
                 else
                 {
-                    textBox_GenreTitle.Text = GenreTitle;
-
+                    textBox_GenreTitle.Text = File.ReadAllText(TitleRead);
 
                 }
             myInputStream.Close();
@@ -63,11 +62,10 @@ namespace MyJukeBox
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            listBox_Genre_List.Items.Clear(); // When loaded, this is the same as the 'refresh' button, but it checks when the form is loaded in case the user has already created genres in the past.
-            textBox_GenreTitle.Text = "";
+            listBox_Genre_List.Items.Clear(); // This updates the genre and reads it into this listbox.
+
             StreamReader myInputStream = File.OpenText(PathToDirectory + ("GenreConfig.txt"));
-            GenreTitle = myInputStream.ReadLine();
-            List<string> Tracks = new List<string>();
+            List<string> Tracks = new List<string>(); // Using a list, the text file is read into the listbox.
             using (StreamReader reader = new StreamReader(PathToDirectory + "GenreConfig.txt"))
             {
                 string Track;
@@ -76,23 +74,23 @@ namespace MyJukeBox
                     listBox_Genre_List.Items.Add(Track);
                 }
             }
-            if (GenreTitle == null)
+            if (listBox_Genre_List == null)
             {
-                textBox_GenreTitle.Text = "No Genres yet!";
+                textBox_GenreTitle.Text = "No Genres Yet!";
             }
             else
             {
-                textBox_GenreTitle.Text = GenreTitle;
-
+                textBox_GenreTitle.Text = File.ReadAllText(TitleRead);
 
             }
             myInputStream.Close();
+            
 
             WMPLib.WindowsMediaPlayer Player = new WMPLib.WindowsMediaPlayer();
 
-            
 
-            
+
+
         }
     }
 }
