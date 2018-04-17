@@ -122,7 +122,13 @@ namespace MyJukeBox
         {
             WMPLib.WindowsMediaPlayer axWindowsMediaPlayer = new WMPLib.WindowsMediaPlayer(); // This is my instance of the media player.
             axWindowsMediaPlayer.URL = (pathToSongs + "//Songs/" + textBox_Now_Playing.Text); // This is how it finds the songs to play.
-            axWindowsMediaPlayer.controls.play(); // WHen it is time, the song will play.
+            axWindowsMediaPlayer.controls.play(); // When it is time, the song will play.
+        }
+
+        private void btn_Skip_Click(object sender, EventArgs e)
+        {
+            textBox_Now_Playing.Text = null;
+            axWindowsMediaPlayer.Ctlcontrols.stop();
         }
     }
 }

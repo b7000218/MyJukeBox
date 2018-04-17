@@ -42,6 +42,7 @@
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.timer_Moving_Tracks = new System.Windows.Forms.Timer(this.components);
             this.timer_Move_to_Playing = new System.Windows.Forms.Timer(this.components);
+            this.btn_Skip = new System.Windows.Forms.Button();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
             this.SuspendLayout();
@@ -124,7 +125,7 @@
             // axWindowsMediaPlayer
             // 
             this.axWindowsMediaPlayer.Enabled = true;
-            this.axWindowsMediaPlayer.Location = new System.Drawing.Point(135, 32);
+            this.axWindowsMediaPlayer.Location = new System.Drawing.Point(142, 221);
             this.axWindowsMediaPlayer.Name = "axWindowsMediaPlayer";
             this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
             this.axWindowsMediaPlayer.Size = new System.Drawing.Size(235, 47);
@@ -153,6 +154,16 @@
             this.timer_Move_to_Playing.Interval = 1000;
             this.timer_Move_to_Playing.Tick += new System.EventHandler(this.timer_Move_to_Playing_Tick);
             // 
+            // btn_Skip
+            // 
+            this.btn_Skip.Location = new System.Drawing.Point(213, 396);
+            this.btn_Skip.Name = "btn_Skip";
+            this.btn_Skip.Size = new System.Drawing.Size(86, 26);
+            this.btn_Skip.TabIndex = 8;
+            this.btn_Skip.Text = "Skip Track";
+            this.btn_Skip.UseVisualStyleBackColor = true;
+            this.btn_Skip.Click += new System.EventHandler(this.btn_Skip_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +172,7 @@
             this.BackgroundImage = global::MyJukeBox.Properties.Resources.jukebox;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(519, 488);
+            this.Controls.Add(this.btn_Skip);
             this.Controls.Add(this.btn_Refresh);
             this.Controls.Add(this.axWindowsMediaPlayer);
             this.Controls.Add(this.panel_Menu);
@@ -194,6 +206,7 @@
         private System.Windows.Forms.Button btn_Refresh;
         private System.Windows.Forms.Timer timer_Moving_Tracks;
         private System.Windows.Forms.Timer timer_Move_to_Playing;
+        private System.Windows.Forms.Button btn_Skip;
     }
 }
 
