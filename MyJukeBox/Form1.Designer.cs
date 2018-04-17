@@ -37,10 +37,10 @@
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.btn_About = new System.Windows.Forms.Button();
             this.btn_Setup = new System.Windows.Forms.Button();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.panel_Menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCopyrightNotice
@@ -60,6 +60,7 @@
             this.listBox_PlayList.Name = "listBox_PlayList";
             this.listBox_PlayList.Size = new System.Drawing.Size(140, 108);
             this.listBox_PlayList.TabIndex = 1;
+            this.listBox_PlayList.SelectedIndexChanged += new System.EventHandler(this.listBox_PlayList_SelectedIndexChanged);
             // 
             // textBox_Now_Playing
             // 
@@ -86,6 +87,7 @@
             this.listBox_Genre_List.Name = "listBox_Genre_List";
             this.listBox_Genre_List.Size = new System.Drawing.Size(181, 82);
             this.listBox_Genre_List.TabIndex = 4;
+            this.listBox_Genre_List.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_Genre_List_MouseDoubleClick);
             // 
             // panel_Menu
             // 
@@ -117,14 +119,14 @@
             this.btn_Setup.UseVisualStyleBackColor = true;
             this.btn_Setup.Click += new System.EventHandler(this.btn_Setup_Click);
             // 
-            // axWindowsMediaPlayer1
+            // Player
             // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(135, 32);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(235, 47);
-            this.axWindowsMediaPlayer1.TabIndex = 6;
+            this.Player.Enabled = true;
+            this.Player.Location = new System.Drawing.Point(135, 32);
+            this.Player.Name = "Player";
+            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
+            this.Player.Size = new System.Drawing.Size(235, 47);
+            this.Player.TabIndex = 6;
             // 
             // btn_Refresh
             // 
@@ -145,7 +147,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(519, 488);
             this.Controls.Add(this.btn_Refresh);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
+            this.Controls.Add(this.Player);
             this.Controls.Add(this.panel_Menu);
             this.Controls.Add(this.listBox_Genre_List);
             this.Controls.Add(this.textBox_GenreTitle);
@@ -157,7 +159,7 @@
             this.Text = "My Juke Box v1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_Menu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,7 +175,7 @@
         private System.Windows.Forms.Panel panel_Menu;
         private System.Windows.Forms.Button btn_About;
         private System.Windows.Forms.Button btn_Setup;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private AxWMPLib.AxWindowsMediaPlayer Player;
         private System.Windows.Forms.Button btn_Refresh;
     }
 }

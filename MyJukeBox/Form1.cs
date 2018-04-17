@@ -18,6 +18,7 @@ namespace MyJukeBox
         // Declaring a string variable for the items the application will be reading in.
         string[] TrackNames = File.ReadAllLines("GenreConfig.txt");
         
+
         public Form1()
         {
             InitializeComponent();
@@ -84,13 +85,18 @@ namespace MyJukeBox
 
             }
             myInputStream.Close();
+        }
+
+        private void listBox_Genre_List_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            listBox_PlayList.Items.Add(listBox_Genre_List.SelectedItem);
+        }
+
+        private void listBox_PlayList_SelectedIndexChanged(object sender, EventArgs e)
+        {
             
-
-            WMPLib.WindowsMediaPlayer Player = new WMPLib.WindowsMediaPlayer();
-
-
-
-
+            Player.URL = listBox_PlayList.SelectedItem.ToString();
+            Player.Ctlcontrols.play();
         }
     }
 }
