@@ -17,6 +17,7 @@ namespace MyJukeBox
         string TitleRead = Directory.GetCurrentDirectory() + "//" + "GenreTitles.txt"; // Locates the file which contains genre titles.
         string[] TrackNames = File.ReadAllLines("GenreConfig.txt"); // Creates an array for tracks to be inputted.
         string pathToSongs = Directory.GetCurrentDirectory() + "\\";  // For the actual jukebox player, this is the path to the song folder.
+        bool JukeBoxFinished; // This is used for seeing if the player has finished playing the current media.
         public Form1()
         {
             InitializeComponent();
@@ -110,12 +111,14 @@ namespace MyJukeBox
             WMPLib.WindowsMediaPlayer axWindowsMediaPlayer = new WMPLib.WindowsMediaPlayer(); // This is my instance of the media player.
             axWindowsMediaPlayer.URL = (pathToSongs + "//Songs/" + textBox_Now_Playing.Text); // This is how it finds the songs to play.
             axWindowsMediaPlayer.controls.play(); // When it is time, the song will play.
+            
         }
 
         private void btn_Skip_Click(object sender, EventArgs e)
         {
             {
                 textBox_Now_Playing.Text = null;
+                JukeBoxFinished = true;
                 while ((textBox_Now_Playing.Text == "") && (listBox_PlayList.Items.Count > 0))
 
                 {
@@ -129,8 +132,20 @@ namespace MyJukeBox
 
         private void listBox_Genre_List_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            listBox_PlayList.Items.Add(listBox_Genre_List.Items[0].ToString());
-            listBox_Genre_List.Items.RemoveAt(0);
+            listBox_PlayList.Items.Add(listBox_Genre_List.SelectedItem.ToString());
+            listBox_Genre_List.Items.Remove(listBox_Genre_List.SelectedItem);
+        }
+
+        private void axWindowsMediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (e.newState == 8)
+            {
+                JukeBoxFinished = true;
+                textBox_Now_Playing.Text = null;
+                axWindowsMediaPlayer.URL = (pathToSongs + "//Songs/" + textBox_Now_Playing.Text);
+                axWindowsMediaPlayer.Ctlcontrols.play();
+            }
+
         }
     }
 }
