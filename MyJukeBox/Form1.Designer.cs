@@ -90,7 +90,6 @@
             this.listBox_Genre_List.Name = "listBox_Genre_List";
             this.listBox_Genre_List.Size = new System.Drawing.Size(181, 82);
             this.listBox_Genre_List.TabIndex = 4;
-            this.listBox_Genre_List.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_Genre_List_MouseDoubleClick);
             // 
             // panel_Menu
             // 

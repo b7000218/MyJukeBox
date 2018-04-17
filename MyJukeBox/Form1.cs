@@ -89,11 +89,6 @@ namespace MyJukeBox
             myInputStream.Close();
         }
 
-        private void listBox_Genre_List_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            listBox_PlayList.Items.Add(listBox_Genre_List.SelectedItem);
-        }
-
         private void listBox_PlayList_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -108,7 +103,6 @@ namespace MyJukeBox
                 timer_Moving_Tracks.Start();
                 listBox_PlayList.Items.Add(listBox_Genre_List.Items[0].ToString());
                 listBox_Genre_List.Items.RemoveAt(0);
-                timer_Moving_Tracks.Stop();
             }
            
             
@@ -116,7 +110,7 @@ namespace MyJukeBox
 
         private void timer_Move_to_Playing_Tick(object sender, EventArgs e)
         {
-            while ((textBox_Now_Playing.Text == null) && (listBox_PlayList.Items.Count > 0))
+            while ((textBox_Now_Playing.Text == "") && (listBox_PlayList.Items.Count > 0))
 
             {
                 timer_Move_to_Playing.Start();
