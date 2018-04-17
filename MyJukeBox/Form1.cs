@@ -116,9 +116,8 @@ namespace MyJukeBox
 
         private void btn_Skip_Click(object sender, EventArgs e)
         {
-            {
+            {    
                 textBox_Now_Playing.Text = null;
-                JukeBoxFinished = true;
                 while ((textBox_Now_Playing.Text == "") && (listBox_PlayList.Items.Count > 0))
 
                 {
@@ -133,7 +132,6 @@ namespace MyJukeBox
         private void listBox_Genre_List_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             listBox_PlayList.Items.Add(listBox_Genre_List.SelectedItem.ToString());
-            listBox_Genre_List.Items.Remove(listBox_Genre_List.SelectedItem);
         }
 
         private void axWindowsMediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
