@@ -40,7 +40,6 @@
             this.btn_Setup = new System.Windows.Forms.Button();
             this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.btn_Refresh = new System.Windows.Forms.Button();
-            this.timer_Moving_Tracks = new System.Windows.Forms.Timer(this.components);
             this.timer_Move_to_Playing = new System.Windows.Forms.Timer(this.components);
             this.btn_Skip = new System.Windows.Forms.Button();
             this.panel_Menu.SuspendLayout();
@@ -143,11 +142,6 @@
             this.btn_Refresh.UseVisualStyleBackColor = true;
             this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
-            // timer_Moving_Tracks
-            // 
-            this.timer_Moving_Tracks.Enabled = true;
-            this.timer_Moving_Tracks.Interval = 1000;
-            // 
             // timer_Move_to_Playing
             // 
             this.timer_Move_to_Playing.Enabled = true;
@@ -204,7 +198,6 @@
         private System.Windows.Forms.Button btn_Setup;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
         private System.Windows.Forms.Button btn_Refresh;
-        private System.Windows.Forms.Timer timer_Moving_Tracks;
         private System.Windows.Forms.Timer timer_Move_to_Playing;
         private System.Windows.Forms.Button btn_Skip;
     }

@@ -47,15 +47,15 @@ namespace MyJukeBox
                     listBox_Genre_List.Items.Add(Track); // Adds each track in turn, if the file is not null.
                 }
             }
-                if (listBox_Genre_List == null)
-                {
+            if (listBox_Genre_List == null)
+            {
                 textBox_GenreTitle.Text = "No Genres Yet!"; // Otherwise, we are promted with an error.
-                }
-                else
-                {
-                    textBox_GenreTitle.Text = File.ReadAllText(TitleRead); // Reads the title into its file.
+            }
+            else
+            {
+                textBox_GenreTitle.Text = File.ReadAllText(TitleRead); // Reads the title into its file.
 
-                }
+            }
             myInputStream.Close(); // Making sure to close the connection so that the file writes.
         }
 
@@ -92,7 +92,6 @@ namespace MyJukeBox
             JukeBox.controls.play();
         }
 
-
         private void timer_Move_to_Playing_Tick(object sender, EventArgs e)
         {
             while ((textBox_Now_Playing.Text == "") && (listBox_PlayList.Items.Count > 0))
@@ -103,7 +102,7 @@ namespace MyJukeBox
                 listBox_PlayList.Items.RemoveAt(0);
 
             }
-            
+
         }
 
         private void textBox_Now_Playing_TextChanged(object sender, EventArgs e)
@@ -130,8 +129,8 @@ namespace MyJukeBox
 
         private void listBox_Genre_List_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-                listBox_PlayList.Items.Add(listBox_Genre_List.Items[0].ToString());
-                listBox_Genre_List.Items.RemoveAt(0);
+            listBox_PlayList.Items.Add(listBox_Genre_List.Items[0].ToString());
+            listBox_Genre_List.Items.RemoveAt(0);
         }
     }
 }
