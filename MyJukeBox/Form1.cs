@@ -17,7 +17,6 @@ namespace MyJukeBox
         string TitleRead = Directory.GetCurrentDirectory() + "//" + "GenreTitles.txt"; // Locates the file which contains genre titles.
         string[] TrackNames = File.ReadAllLines("GenreConfig.txt"); // Creates an array for tracks to be inputted.
         string pathToSongs = Directory.GetCurrentDirectory() + "\\";  // For the actual jukebox player, this is the path to the song folder.
-
         public Form1()
         {
             InitializeComponent();
@@ -93,17 +92,6 @@ namespace MyJukeBox
             JukeBox.controls.play();
         }
 
-        private void timer_Moving_Tracks_Tick(object sender, EventArgs e)
-        {
-            while (listBox_Genre_List.Items.Count>0 && listBox_PlayList.Items.Count<1)
-            {
-                timer_Moving_Tracks.Start();
-                listBox_PlayList.Items.Add(listBox_Genre_List.Items[0].ToString());
-                listBox_Genre_List.Items.RemoveAt(0);
-            }
-           
-            
-        }
 
         private void timer_Move_to_Playing_Tick(object sender, EventArgs e)
         {
@@ -127,8 +115,23 @@ namespace MyJukeBox
 
         private void btn_Skip_Click(object sender, EventArgs e)
         {
-            textBox_Now_Playing.Text = null;
-            axWindowsMediaPlayer.Ctlcontrols.stop();
+            {
+                textBox_Now_Playing.Text = null;
+                while ((textBox_Now_Playing.Text == "") && (listBox_PlayList.Items.Count > 0))
+
+                {
+                    textBox_Now_Playing.Text = listBox_PlayList.Items[0].ToString();
+                    listBox_PlayList.Items.RemoveAt(0);
+
+                }
+
+            }
+        }
+
+        private void listBox_Genre_List_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+                listBox_PlayList.Items.Add(listBox_Genre_List.Items[0].ToString());
+                listBox_Genre_List.Items.RemoveAt(0);
         }
     }
 }
