@@ -13,7 +13,6 @@ namespace MyJukeBox
 {
     public partial class Setup : Form
     {
-        public int Genre_Number;
         public Setup()
         {
             InitializeComponent();
@@ -68,23 +67,24 @@ namespace MyJukeBox
             {
                 string Path = Directory.GetCurrentDirectory() + "\\";
                 StreamWriter myOutputStream = File.CreateText(Path + "GenreConfig.txt"); // This finds the current directory, and add a .txt file as I have named it here, which will act as the basis for configuring the genres a user can create.
-                
                 string[] Tracks = listBox_Genre_Contents.Items.OfType<string>().ToArray(); // This creates the array of tracks, based on what the user selects in the given listbox, and adds this to said array.
                 myOutputStream.WriteLine(textBox_Genre_Title.Text);
-                foreach (string Values in Tracks)
-                {
-                    
-                    myOutputStream.WriteLine(Values); // A foreach loop writes the desired string value into the file.
-                    MessageBox.Show("You have added " + Values + " to this genre.");
-                }
+                
+                    foreach (string Values in Tracks)
+                    {
+
+                        myOutputStream.WriteLine(Values); // A foreach loop writes the desired string value into the file.
+                        MessageBox.Show("You have added " + Values + " to this genre.");
+                    }
+                
                 myOutputStream.Close(); // Closing the connection to the file.
             }
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            string Path = Directory.GetCurrentDirectory() + "\\";
-            File.WriteAllText(Path + "GenreConfig.txt", string.Empty); // Here, we overwrite the text file with the 'empty' argument, essentially clearing it so that it can be redone if the user wishes.
+            string PathToDirectory = Directory.GetCurrentDirectory() + "\\";
+            File.WriteAllText(PathToDirectory + "GenreConfig.txt", string.Empty); // Here, we overwrite the text file with the 'empty' argument, essentially clearing it so that it can be redone if the user wishes.
             textBox_Genre_Title.Clear();
             MessageBox.Show("You have deleted your genre configuration file. Add a new genre and some tracks to create a new one.");
         }
