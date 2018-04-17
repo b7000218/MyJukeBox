@@ -37,7 +37,8 @@ namespace MyJukeBox
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
             listBox_Genre_List.Items.Clear(); // This updates the genre and reads it into this listbox.
-            
+            listBox_PlayList.Items.Clear(); // Wipes the playlist
+            textBox_Now_Playing.Text = null; // Wipes the currently playing box.
             StreamReader myInputStream = File.OpenText(PathToDirectory + ("GenreConfig.txt"));
             List<string> Tracks = new List<string>(); // Using a list, the text file is read into the listbox.
             using (StreamReader reader = new StreamReader(PathToDirectory + "GenreConfig.txt"))
@@ -64,7 +65,8 @@ namespace MyJukeBox
         private void Form1_Load(object sender, EventArgs e)
         {
             listBox_Genre_List.Items.Clear(); // This updates the genre and reads it into this listbox.
-
+            listBox_PlayList.Items.Clear(); // Wipes the playlist.
+            textBox_Now_Playing.Text = null;
             StreamReader myInputStream = File.OpenText(PathToDirectory + ("GenreConfig.txt"));
             List<string> Tracks = new List<string>(); // Using a list, the text file is read into the listbox.
             using (StreamReader reader = new StreamReader(PathToDirectory + "GenreConfig.txt"))
@@ -97,6 +99,30 @@ namespace MyJukeBox
             
             Player.URL = listBox_PlayList.SelectedItem.ToString();
             Player.Ctlcontrols.play();
+        }
+
+        private void timer_Moving_Tracks_Tick(object sender, EventArgs e)
+        {
+            while (listBox_Genre_List.Items.Count>0 && listBox_PlayList.Items.Count<1)
+            {
+                timer_Moving_Tracks.Start();
+                listBox_PlayList.Items.Add(listBox_Genre_List.Items[0].ToString());
+                listBox_Genre_List.Items.RemoveAt(0);
+                timer_Moving_Tracks.Stop();
+            }
+           
+            
+        }
+
+        private void timer_Move_to_Playing_Tick(object sender, EventArgs e)
+        {
+            while ((textBox_Now_Playing.Text == null) && (listBox_PlayList.Items.Count > 0))
+
+            {
+                timer_Move_to_Playing.Start();
+                textBox_Now_Playing.Text = listBox_PlayList.Items[0].ToString();
+                listBox_PlayList.Items.RemoveAt(0);
+            }
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblCopyrightNotice = new System.Windows.Forms.Label();
             this.listBox_PlayList = new System.Windows.Forms.ListBox();
@@ -39,6 +40,8 @@
             this.btn_Setup = new System.Windows.Forms.Button();
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.btn_Refresh = new System.Windows.Forms.Button();
+            this.timer_Moving_Tracks = new System.Windows.Forms.Timer(this.components);
+            this.timer_Move_to_Playing = new System.Windows.Forms.Timer(this.components);
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.SuspendLayout();
@@ -138,6 +141,18 @@
             this.btn_Refresh.UseVisualStyleBackColor = true;
             this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
+            // timer_Moving_Tracks
+            // 
+            this.timer_Moving_Tracks.Enabled = true;
+            this.timer_Moving_Tracks.Interval = 1000;
+            this.timer_Moving_Tracks.Tick += new System.EventHandler(this.timer_Moving_Tracks_Tick);
+            // 
+            // timer_Move_to_Playing
+            // 
+            this.timer_Move_to_Playing.Enabled = true;
+            this.timer_Move_to_Playing.Interval = 1000;
+            this.timer_Move_to_Playing.Tick += new System.EventHandler(this.timer_Move_to_Playing_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,6 +192,8 @@
         private System.Windows.Forms.Button btn_Setup;
         private AxWMPLib.AxWindowsMediaPlayer Player;
         private System.Windows.Forms.Button btn_Refresh;
+        private System.Windows.Forms.Timer timer_Moving_Tracks;
+        private System.Windows.Forms.Timer timer_Move_to_Playing;
     }
 }
 
