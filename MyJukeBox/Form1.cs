@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO; // Allows for file access. To find the songs folder in the browser dialog, 'Assignment 2 - Jukebox\MyJukeBox\MyJukeBox\bin\Debug\Songs'.
-
 namespace MyJukeBox
 {
     public partial class Form1 : Form
@@ -111,7 +110,8 @@ namespace MyJukeBox
 
         private void btn_Skip_Click(object sender, EventArgs e)
         {
-            {    
+            {
+                
                 textBox_Now_Playing.Text = null;
                 if (listBox_PlayList.Items.Count > 0) // The button to get the next song in the list to play only works if there are more than 0 items in the queue.
 
@@ -131,9 +131,12 @@ namespace MyJukeBox
 
         private void axWindowsMediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            if ((e.newState == 8) && (listBox_PlayList.Items.Count > 0)) // Supposed to interpret when the JukeBox is no longer playing its current song. If this is the case, it empties 'currently playing' and allows the next song to be played.
+            if (((WMPLib.WMPPlayState)e.newState == WMPLib.WMPPlayState.wmppsMediaEnded)) // Supposed to interpret when the JukeBox is no longer playing its current song. If this is the case, it empties 'currently playing' and allows the next song to be played.
             {
-                timer_AutoPlay.Start();
+                textBox_Now_Playing.Text = "";
+                timer_Move_to_Playing.Enabled = true;
+                timer_Move_to_Playing.Start();
+                timer_Move_to_Playing.Tick += timer_Move_to_Playing_Tick; // This code should determine when the current song has finished, then call the originl timer for moving songs to 'now playing'.
                 
             }
 
@@ -141,8 +144,7 @@ namespace MyJukeBox
 
         private void timer_AutoPlay_Tick(object sender, EventArgs e)
         {
-            textBox_Now_Playing.Text = listBox_PlayList.Items[0].ToString();
-            listBox_PlayList.Items.RemoveAt(0);
+            
         }
     }
 }

@@ -114,7 +114,7 @@ namespace MyJukeBox
 
         private void btn_Delete_From_Genre_Click(object sender, EventArgs e)
         {
-            listBox_Genre_Contents.Items.Clear();
+            listBox_Genre_Contents.Items.Clear(); // Simply clears the current genre contents.
         }
     }
 }
