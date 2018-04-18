@@ -30,7 +30,6 @@
         {
             this.groupBox_Import = new System.Windows.Forms.GroupBox();
             this.listBox_Imported_Tracks = new System.Windows.Forms.ListBox();
-            this.lbl_Setup = new System.Windows.Forms.Label();
             this.btn_Import = new System.Windows.Forms.Button();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_Copy = new System.Windows.Forms.Button();
@@ -67,16 +66,6 @@
             this.listBox_Imported_Tracks.Name = "listBox_Imported_Tracks";
             this.listBox_Imported_Tracks.Size = new System.Drawing.Size(179, 225);
             this.listBox_Imported_Tracks.TabIndex = 0;
-            // 
-            // lbl_Setup
-            // 
-            this.lbl_Setup.AutoSize = true;
-            this.lbl_Setup.Font = new System.Drawing.Font("Lucida Console", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Setup.Location = new System.Drawing.Point(153, 9);
-            this.lbl_Setup.Name = "lbl_Setup";
-            this.lbl_Setup.Size = new System.Drawing.Size(270, 21);
-            this.lbl_Setup.TabIndex = 1;
-            this.lbl_Setup.Text = "Setup the Jukebox...";
             // 
             // btn_Import
             // 
@@ -238,7 +227,6 @@
             this.Controls.Add(this.groupBox_Genre);
             this.Controls.Add(this.btn_Clear);
             this.Controls.Add(this.btn_Import);
-            this.Controls.Add(this.lbl_Setup);
             this.Controls.Add(this.groupBox_Import);
             this.Name = "Setup";
             this.Text = "JukeBox Setup";
@@ -246,14 +234,12 @@
             this.groupBox_Genre.ResumeLayout(false);
             this.groupBox_Genre.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox_Import;
-        private System.Windows.Forms.Label lbl_Setup;
         private System.Windows.Forms.Button btn_Import;
         private System.Windows.Forms.Button btn_Clear;
         private System.Windows.Forms.ListBox listBox_Imported_Tracks;

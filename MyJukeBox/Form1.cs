@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+using System.IO; // Allows for file access. To find the songs folder in the browser dialog, 'Assignment 2 - Jukebox\MyJukeBox\MyJukeBox\bin\Debug\Songs'.
 
 namespace MyJukeBox
 {
@@ -86,11 +86,6 @@ namespace MyJukeBox
 
             }
             myInputStream.Close();
-
-            WMPLib.WindowsMediaPlayer JukeBox = new WMPLib.WindowsMediaPlayer();
-            string pathToSongs = Directory.GetCurrentDirectory() + "\\";
-            JukeBox.URL = (pathToSongs + "//Songs/" + textBox_Now_Playing.Text);
-            JukeBox.controls.play();
         }
 
         private void timer_Move_to_Playing_Tick(object sender, EventArgs e)
@@ -118,32 +113,36 @@ namespace MyJukeBox
         {
             {    
                 textBox_Now_Playing.Text = null;
-                while ((textBox_Now_Playing.Text == "") && (listBox_PlayList.Items.Count > 0))
+                if (listBox_PlayList.Items.Count > 0) // The button to get the next song in the list to play only works if there are more than 0 items in the queue.
 
                 {
                     textBox_Now_Playing.Text = listBox_PlayList.Items[0].ToString();
-                    listBox_PlayList.Items.RemoveAt(0);
-
+                    listBox_PlayList.Items.RemoveAt(0); // Empties the 'currently playing' textbox and allows the next song to be played.
+                } else {
+                    MessageBox.Show("Queue some tracks to play before you skip.");
                 }
-
             }
         }
 
         private void listBox_Genre_List_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            listBox_PlayList.Items.Add(listBox_Genre_List.SelectedItem.ToString());
+            listBox_PlayList.Items.Add(listBox_Genre_List.SelectedItem.ToString()); // Simply copies what the user double clicks on into the queue, and leaves it in its current listbox too.
         }
 
         private void axWindowsMediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            if (e.newState == 8)
+            if ((e.newState == 8) && (listBox_PlayList.Items.Count > 0)) // Supposed to interpret when the JukeBox is no longer playing its current song. If this is the case, it empties 'currently playing' and allows the next song to be played.
             {
-                JukeBoxFinished = true;
-                textBox_Now_Playing.Text = null;
-                axWindowsMediaPlayer.URL = (pathToSongs + "//Songs/" + textBox_Now_Playing.Text);
-                axWindowsMediaPlayer.Ctlcontrols.play();
+                timer_AutoPlay.Start();
+                
             }
 
+        }
+
+        private void timer_AutoPlay_Tick(object sender, EventArgs e)
+        {
+            textBox_Now_Playing.Text = listBox_PlayList.Items[0].ToString();
+            listBox_PlayList.Items.RemoveAt(0);
         }
     }
 }

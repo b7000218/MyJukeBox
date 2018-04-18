@@ -42,6 +42,7 @@
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.timer_Move_to_Playing = new System.Windows.Forms.Timer(this.components);
             this.btn_Skip = new System.Windows.Forms.Button();
+            this.timer_AutoPlay = new System.Windows.Forms.Timer(this.components);
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
             this.SuspendLayout();
@@ -159,6 +160,11 @@
             this.btn_Skip.UseVisualStyleBackColor = true;
             this.btn_Skip.Click += new System.EventHandler(this.btn_Skip_Click);
             // 
+            // timer_AutoPlay
+            // 
+            this.timer_AutoPlay.Interval = 1000;
+            this.timer_AutoPlay.Tick += new System.EventHandler(this.timer_AutoPlay_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,6 +207,7 @@
         private System.Windows.Forms.Button btn_Refresh;
         private System.Windows.Forms.Timer timer_Move_to_Playing;
         private System.Windows.Forms.Button btn_Skip;
+        private System.Windows.Forms.Timer timer_AutoPlay;
     }
 }
 
